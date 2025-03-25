@@ -2,7 +2,21 @@ let ItemsContainer = document.querySelector(".items");
 
 let data = fetch("./data.json")
 data.then((res) => {
-
+  if (
+    document.querySelector("body").classList.contains("lightBg")
+  ) {
+    localStorage.setItem("theme", "darkBg")
+    document.querySelector("body").classList.remove("lightBg")
+    document.querySelector("body").classList.add("darkBg")
+    document.querySelector(".logo").innerHTML = darkLogo;
+    themeButton.innerHTML = darkIcon
+  } else {
+    localStorage.setItem("theme", "lightBg")
+    document.querySelector("body").classList.remove("darkBg")
+    document.querySelector("body").classList.add("lightBg")
+    document.querySelector(".logo").innerHTML = LightLogo;
+    themeButton.innerHTML = lightIcon
+  }
   return res.json()
 }).then((res) => {
   const result = res
