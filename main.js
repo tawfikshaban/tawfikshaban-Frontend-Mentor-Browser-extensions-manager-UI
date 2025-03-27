@@ -173,3 +173,11 @@ if (
   themeButton.innerHTML = darkIcon
 
 }
+document.querySelector(".true").onClick = ()=>{
+document.querySelector(".true").classList.add("false")
+document.querySelector(".true").classList.remove("true")
+}
+document.querySelector(".false").onClick = ()=>{
+document.querySelector(".false").classList.add("true")
+document.querySelector(".false").classList.remove("false")
+}
