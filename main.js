@@ -54,6 +54,14 @@ data.then((res) => {
     div.classList.add("container", `${result[i].isActive}`)
     ItemsContainer.appendChild(div)
     // secund Part(Controls)
+document.querySelector(".true").onClick = ()=>{
+document.querySelector(".true").classList.add("false")
+document.querySelector(".true").classList.remove("true")
+}
+document.querySelector(".false").onClick = ()=>{
+document.querySelector(".false").classList.add("true")
+document.querySelector(".false").classList.remove("false")
+}
 
 
   }
@@ -172,12 +180,4 @@ if (
   document.querySelector(".logo").innerHTML = darkLogo
   themeButton.innerHTML = darkIcon
 
-}
-document.querySelector(".true").onClick = ()=>{
-document.querySelector(".true").classList.add("false")
-document.querySelector(".true").classList.remove("true")
-}
-document.querySelector(".false").onClick = ()=>{
-document.querySelector(".false").classList.add("true")
-document.querySelector(".false").classList.remove("false")
 }
