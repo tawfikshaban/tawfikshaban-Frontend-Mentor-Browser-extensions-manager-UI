@@ -1,6 +1,6 @@
 let ItemsContainer = document.querySelector(".items");
 
-let data = fetch("/data.json")
+let data = fetch("data.json")
 data.then((res) => {
   return res.json()
 }).then((res) => {
