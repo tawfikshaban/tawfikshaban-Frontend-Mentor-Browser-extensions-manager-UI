@@ -1,22 +1,7 @@
 let ItemsContainer = document.querySelector(".items");
 
-let data = fetch("./data.json")
+let data = fetch("/src/data.json")
 data.then((res) => {
-  if (
-    document.querySelector("body").classList.contains("lightBg")
-  ) {
-    localStorage.setItem("theme", "darkBg")
-    document.querySelector("body").classList.remove("lightBg")
-    document.querySelector("body").classList.add("darkBg")
-    document.querySelector(".logo").innerHTML = darkLogo;
-    themeButton.innerHTML = darkIcon
-  } else {
-    localStorage.setItem("theme", "lightBg")
-    document.querySelector("body").classList.remove("darkBg")
-    document.querySelector("body").classList.add("lightBg")
-    document.querySelector(".logo").innerHTML = LightLogo;
-    themeButton.innerHTML = lightIcon
-  }
   return res.json()
 }).then((res) => {
   const result = res
@@ -54,22 +39,10 @@ data.then((res) => {
     div.classList.add("container", `${result[i].isActive}`)
     ItemsContainer.appendChild(div)
     // secund Part(Controls)
-document.querySelector(".true").onClick = ()=>{
-document.querySelector(".true").classList.add("false")
-document.querySelector(".true").classList.remove("true")
-}
-document.querySelector(".false").onClick = ()=>{
-document.querySelector(".false").classList.add("true")
-document.querySelector(".false").classList.remove("false")
-}
 
 
   }
 })
-
-
-
-
 let ButtonsButton = document.querySelectorAll('.buttons button');
 let LightLogo = `
 <svg xmlns="http://www.w3.org/2000/svg" width="179" height="41" fill="none" viewBox="0 0 179 41">
@@ -164,20 +137,24 @@ document.querySelector("body").classList.add(`${localStorage.getItem("theme")}`)
 
 // document.querySelector("body").classList.contains('darkBg')
 if (
-  localStorage.getItem("theme") === "lightBg"
+  localStorage.getItem("theme") !== undefined
 ) {
-  document.querySelector("body").classList.remove('darkBg')
-  document.querySelector("body").classList.add('lightBg')
-  document.querySelector(".logo").innerHTML = LightLogo
-  themeButton.innerHTML = lightIcon
-
+  document.querySelector("body").classList.add(`${localStorage.getItem("theme") }`)
+  document.querySelector(".logo").innerHTML = localStorage.getItem("theme")=== "lightBg" ? LightLogo : darkLogo
+  themeButton.innerHTML = localStorage.getItem("theme") === "lightBg" ? lightIcon : darkIcon 
 }
-if (
-  localStorage.getItem("theme") === "darkBg"
-) {
-  document.querySelector("body").classList.remove('lightBg')
-  document.querySelector("body").classList.add('darkBg')
-  document.querySelector(".logo").innerHTML = darkLogo
-  themeButton.innerHTML = darkIcon
-
-}
+// if (
+//   localStorage.getItem("theme") === "darkBg"
+// ) {
+//   document.querySelector("body").classList.remove('lightBg')
+//   document.querySelector("body").classList.add('darkBg')
+//   document.querySelector(".logo").innerHTML = darkLogo
+//   themeButton.innerHTML = darkIcon
+//   // document.querySelector(".logo").innerHTML = darkLogo;
+//   // themeButton.innerHTML = darkIcon
+// } else if (localStorage.getItem("theme") === "lightBg") {
+//   document.querySelector("body").classList.add('lightBg')
+//   document.querySelector(".logo").innerHTML = LightLogo
+//   themeButton.innerHTML = lightIcon
+  
+// }
